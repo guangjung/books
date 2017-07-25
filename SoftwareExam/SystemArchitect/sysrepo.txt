@@ -1,0 +1,54 @@
+sudo sysrepoctl --install  --yang=/home/guangjung/git_20170106/yang-model/oplink/Web/com-att-user-mgnt.yang
+
+sudo sysrepocfg --import=/home/guangjung/git_20170106/yang-model/oplink/Web/com-att-user-mgnt-startup.xml --format=xml  --datastore=startup com-att-user-mgnt
+
+
+sudo sysrepocfg --import=/home/guangjung/git_20170106/yang-model/oplink/Web/com-att-user-mgnt123.xml --format=xml  --datastore=startup com-att-user-mgnt
+
+sudo sysrepoctl    --uninstall    --module=com-att-user-mgnt 
+
+
+
+[DBG] Usage count com-att-user-mgnt decremented (value=0)
+
+
+sysrepocfg --export=/home/guangjung/git_20161019/sysrepo/examples/authd/server/startup.xml --format=xml --datastore=startup com-att-user-mgnt
+
+sysrepocfg --export=/home/guangjung/git_20161019/sysrepo/examples/authd/server/running.xml --format=xml --datastore=running com-att-user-mgnt
+
+/home/guangjung/root/usr/local/bin/sysrepod -d -l 4
+
+export  LD_LIBRARY_PATH=/home/guangjung/root/usr/local/lib
+
+/home/guangjung/root/usr/local/bin/sysrepoctl  -l 
+
+
+
+/home/guangjung/root/usr/local/bin/sysrepoctl --install  --yang=/home/guangjung/root/etc/sysrepo/yang/test/com-oplink-auth-mgnt.yang
+/home/guangjung/root/usr/local/bin/sysrepocfg --import=/home/guangjung/root/etc/sysrepo/yang/test/com-oplink-auth-mgnt-startup.xml --format=xml  --datastore=startup com-oplink-auth-mgnt
+/home/guangjung/root/usr/local/bin/sysrepoctl --uninstall --module=com-oplink-auth-mgnt 
+
+/home/guangjung/root/usr/local/bin/sysrepoctl --install  --yang=/home/guangjung/root/etc/sysrepo/yang/test/com-auth-mgnt-rpc.yang
+/home/guangjung/root/usr/local/bin/sysrepoctl --uninstall --module=com-auth-mgnt-rpc 
+/home/guangjung/root/usr/local/bin/sysrepocfg --import=/home/guangjung/root/etc/sysrepo/yang/test/users.xml --format=xml  --datastore=startup com-auth-mgnt-rpc
+
+
+
+/home/guangjung/root/etc/sysrepo/data
+
+
+/home/guangjung/root/usr/local/bin/sysrepoctl --install  --yang=/home/guangjung/root/etc/sysrepo/yang/test/turing-machine@2013-12-27.yang
+
+
+export  LD_LIBRARY_PATH=/home/guangjung/opensource/libev-4.24/.libs
+
+https://sourceforge.net/projects/traceroute/files/traceroute/traceroute-2.1.0/traceroute-2.1.0.tar.gz
+
+
+
+https://www.manning.com/books/spa-design-and-architecture
+
+
+
+
+

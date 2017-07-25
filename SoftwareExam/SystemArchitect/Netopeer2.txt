@@ -1,0 +1,39 @@
+1. 下载libyang
+	git clone  -b master-sysrepo https://github.com/CESNET/libyang.git
+
+2. 下载libnetconf2（依赖于libyang 、libssh、openssl） 
+	git clone  https://github.com/CESNET/libnetconf2.git 
+	
+	git reset --hard 55a8424c7c5ef007c441b269d08af93eeb170f97
+	
+	
+	2.1 下载libssh
+		https://git.libssh.org/projects/libssh.git/
+	2.2 下载openssl （建议用最新稳定版本）
+		https://github.com/openssl/openssl
+
+3. 下载Netopeer2 （依赖于libyang和libnetconf2）
+   (1) git clone https://github.com/CESNET/Netopeer2.git Netopeer2
+		
+   (2)  cd Netopeer2
+        git reset --hard  c5ea146c26b6f870d2d413c7de0972a8eb9d5397
+
+		
+说明：
+	1. Netopeer2 + libyang + libnetconf2 分别使用最新版本编译，验证能否编译正确？
+	2. sysrepo的编译是否仅支持libyang（master-sysrepo）分支，对于最新版本的libyang支持吗？
+
+其它：
+cmake -DCMAKE_BUILD_TYPE=Release ..
+cmake -DLIBSSH_LIBRARIES=/home/guangjung/opensource/libssh/build/src -DLIBSSH_INCLUDE_DIRS=/home/guangjung/opensource/libssh/include -DLIBYANG_LIBRARIES=/home/guangjung/opensource/libyang-sysrepo/build -DLIBYANG_INCLUDE_DIRS=/home/guangjung/opensource/libyang-sysrepo/src ..
+cmake  -DCMAKE_INSTALL_PREFIX:PATH=/home/guangjung/root ..
+
+
+
+
+
+参考RFC
+
+https://tools.ietf.org/html/rfc6536
+------Network Configuration Protocol (NETCONF) Access Control Model
+

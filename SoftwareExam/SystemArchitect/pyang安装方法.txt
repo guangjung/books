@@ -1,0 +1,72 @@
+1. 下载pyang源码
+   git clone https://github.com/mbj4668/pyang.git
+   
+
+2. 编译
+   cd pyang
+   python setup.py build
+ 
+
+3. 安装
+   sudo python setup.py install
+ 
+ 
+ 
+
+4. 如果在编译或调试pyang时，遇到错误，需要安装如下插件
+
+(1) 安装setuptools
+编译pyang源码时，如果编译错误为“”，需要安装setuptools包
+
+参考网址：
+ http://www.pythontab.com/html/2012/pythonhexinbiancheng_1220/21.html
+
+下载setuptools包
+ 
+shell# wget http://pypi.python.org/packages/source/s/setuptools/setuptools-0.6c11.tar.gz
+
+解压setuptools包
+shell# tar zxvf setuptools-0.6c11.tar.gz
+shell# cd setuptools-0.6c11
+
+编译setuptools
+shell# python setup.py build
+
+开始执行setuptools安装
+shell# python setup.py install
+
+(2)安装 xsltproc
+	 sudo apt-get install xsltproc
+ 
+缺少xsltproc，会报如下错误 
+guangjung@oplink-OptiPlex-390:~/opensource/pyang/doc/tutorial/examples$ yang2dsdl -t config turing-machine.yang
+/home/guangjung/opensource/pyang/bin/yang2dsdl: 243: /home/guangjung/opensource/pyang/bin/yang2dsdl: xsltproc: not found
+== Generating RELAX NG schema './-config.rng'
+/home/guangjung/opensource/pyang/bin/yang2dsdl: 76: /home/guangjung/opensource/pyang/bin/yang2dsdl: xsltproc: not found
+
+
+5. 生成xml文件 
+pyang -f sample-xml-skeleton --sample-xml-skeleton-annotation  --sample-xml-skeleton-doctype=config turing-machine.yang
+
+附：
+1.validate
+  export YANG_MODPATH=~/tmp/yang-model/oplink/Common
+  pyang com-att-device.yang
+2.generate a tree structure fro review
+  pyang -f tree com-att-device.yang > com-att-device.tree
+3.create a skeleton xml instance:(此处生成出来的xml文件格式，即为attdevice_transapi_init函数出参running的格式)
+  pyang -f sample-xml-skeleton  --sample-xml-skeleton-annotations --sample-xml-skeleton-doctype=config com-att-device.yang | xmllint -o com-att-device-startup.xml --format -
+  
+  pyang -f sample-xml-skeleton  --sample-xml-skeleton-annotations --sample-xml-skeleton-doctype=config com-att-user-mgnt.yang | xmllint -o com-att-user-mgnt123.xml --format -
+  edit xml instance, vi of-config-startup.xml, add some values
+4.generating schemas from yang model:
+  
+  yang2dsdl -t data ~/shasta/yang-model/oplink/Device-Model/roadm/com-att-device.yang
+  lnctool --model ./com-att-device.yang validation
+  
+  yang2dsdl -s -j -b com-att-device -t data -v com-att-device-startup.xml
+  
+ 
+
+
+
